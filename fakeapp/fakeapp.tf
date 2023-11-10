@@ -6,7 +6,7 @@ resource "aws_instance" "fakefrontend_ec2" {
   key_name        = aws_key_pair.appsshkey.key_name
   associate_public_ip_address = true  # This line is added to associate a public IP
   vpc_security_group_ids      = [aws_security_group.fakefrontend_sg.id] # Attach the security group
-  
+
   user_data = <<-EOF
               #!/bin/bash
               sudo apt-get update
@@ -33,8 +33,8 @@ resource "aws_security_group" "fakefrontend_sg" {
 
   ingress {
     description      = "HTTP"
-    from_port        = 9090
-    to_port          = 9090
+    from_port        = 80
+    to_port          = 80
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"] # Allows traffic from any IP address. Narrow this down as necessary for your use case.
   }
