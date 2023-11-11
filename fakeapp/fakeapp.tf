@@ -17,7 +17,7 @@ resource "aws_instance" "fakefrontend_ec2" {
               sudo apt-get install -y docker-ce
               sudo systemctl start docker
               sudo systemctl enable docker
-              sudo docker run --rm -d -p 80:80 yeasy/simple-web:latest
+              sudo docker run --rm -d -p 80:80 nginx
               EOF
 
 
